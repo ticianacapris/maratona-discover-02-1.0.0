@@ -2,9 +2,9 @@
   "name": "maratona-discover-02-1.0.0",
   "version": "1.0.0",
   "description": "Freelance Calculator",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/ticianacapris/maratona-discover-02-1.0.0/issues"
   },
-  "homepage": "https://github.com/ticianacapris/maratona-discover-02-1.0.0#readme"
+  "homepage": "https://github.com/ticianacapris/maratona-discover-02-1.0.0#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
