@@ -3,14 +3,22 @@ const routes = express.Router()
 
 const views = __dirname +  "/views/"
 
-const profile ={
-    name: "Ticiana",
-    avatar: "https://github.com/ticianacapris.png",
-    "monthly-budget": 3000,
-    "days-per-week":5,
-    "hours-per-day":5,
-    "vacation-per-year": 4,
-    "value-hour": 75
+const Profile ={
+    data : {
+        name: "Ticiana",
+        avatar: "https://github.com/ticianacapris.png",
+        "monthly-budget": 3000,
+        "days-per-week":5,
+        "hours-per-day":5,
+        "vacation-per-year": 4,
+        "value-hour": 75
+    },
+   controllers:{
+       index(){
+        return res.render( views +"profile", {profile:Profile.data})
+
+       },
+   }
 }
 
 const Job = {
@@ -113,6 +121,6 @@ routes.post('/job', Job.controllers.save)
 
 routes.get('/job/edit', (req, res) => res.render( views +"job-edit"))
 
-routes.get('/profile', (req, res) => res.render( views +"profile", {profile}))
+routes.get('/profile', Profile.controllers.index)
 
 module.exports = routes;
