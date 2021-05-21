@@ -14,10 +14,13 @@ const Profile ={
         "value-hour": 75
     },
    controllers:{
-       index(){
+       index(req,res){
         return res.render( views +"profile", {profile:Profile.data})
 
        },
+       update(){
+
+       }
    }
 }
 
@@ -55,7 +58,7 @@ const Job = {
                         ...job,
                         remaining,
                         status,
-                        budget:profile["value-hour"] * job["total-hours"]
+                        budget:Profile.data["value-hour"] * job["total-hours"]
                     }
                 })
             
@@ -69,9 +72,9 @@ const Job = {
         },    
 
         save(req, res) {
-            const lastId = Job.data[Job.data.length - 1] ? jobs[jobs.length - 1].id : 1
+            const lastId = Job.data[Job.data.length - 1] ? Job.data[Job.data.length - 1].id : 1
 
-            jobs.push({
+            Job.data.push({
                 id: lastId + 1,
                 name: req.body.name,
                 "daily-hours": req.body["daily-hours"],
@@ -79,6 +82,7 @@ const Job = {
                 created_at: Date.now() //atribuindo a data de hoje
            })
             return res.redirect('/')
+            console.log("ola");
         }
     
         },
